@@ -11,11 +11,9 @@ class ImagemSerializer(serializers.ModelSerializer):
 
 class CarroSerializer(serializers.ModelSerializer):
     imagens = ImagemSerializer(many=True, read_only=True)
-    fabricante = serializers.SerializerMethodField('get_fabricante')
+    fabricante = serializers.CharField(source='fabricante.nome')
     quant_disponivel = serializers.IntegerField(read_only=True)
 
-    def get_fabricante(self, obj):
-        return obj.fabricante.nome
 
     class Meta:
         model = Carro

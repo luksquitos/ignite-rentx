@@ -14,9 +14,14 @@ class CarroViewset(viewsets.ModelViewSet):
     
     #TODO Para fazer o filtro da margem de preço
     # será necessário sobrescrever o método
-    # get_queryset, eu acho. 
+    # get_queryset, eu acho.
+    #
+    # Para pegar os parâmetros da URL, será utilizado 
+    # o self.request.query_params
+    # agora é saber como o queryset é retornado
+    # com esse parâmetro
     
     def get_queryset(self):
-        print('o self do viewset é ', self.__dict__)
+        print('o dir do request é  ', self.request.query_params)
         queryset = super().get_queryset()
         return queryset
