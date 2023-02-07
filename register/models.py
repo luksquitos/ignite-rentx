@@ -15,11 +15,21 @@ class Pessoa(models.Model):
     
     @property
     def carro_favorito(self):
+        # FIXME Pode ser que haja duplicação.
+        # Caso tenham utilizar .distinct() antes
+        # do annotate
+        #
         # var = Carro.objects.filter(
         #     agendamentos__pessoa=self
-        # ).annotate(Count('agendamentos__carro'))
-        # print(var)
+        # ).annotate(quant_agendamentos=Count('agendamentos'))
+        # 
         # return var
+        #
+        # var irá retornar um Queryset com todos os carros 
+        # alugados por tal pessoa, juntamente
+        # com um novo att "quant_agendamentos"
+        # para cada instância presente no queryset
+        # EU ACHO...
         ...
 
 class Agendamento(models.Model):
